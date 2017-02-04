@@ -135,7 +135,7 @@ Vamos lá !
 	Nããão ! 
 
 
- -Mas pq  ?
+- Mas pq  ?
 
 	Esse animal é um ser abstrato, ou seja, eu não faço " idéia " do que ele faz. 
 
@@ -148,10 +148,10 @@ Então eles extendem de Animal recebendo seus atributos sendo assim tornando ani
 
 
 Agora só não podemos esquecer que toda classe abstrata não pode ser istanciada, assim como as interfaces. 
-Você pode instanciar quem herda de animal ;)
+Você pode instanciar quem herda de animal.
 
 
-# Resumo de uma Interface e de uma classe Abstrata
+## Resumo de uma Interface e de uma classe Abstrata
 Interface - definimos um método ( sem implementação ) - quem implementar essa interface implementa o método.
 Abstrata - o método ja é pré-definido , ja está implementado. 
 
@@ -180,11 +180,12 @@ Dessa forma toda vez que for chamado o método comunicar do Homem, a execução 
 Legal né ? Mas você reparou que até este ponto há algo no nosso código que esta duplicado e podemos melhorar ? 
 
 A classe Homem e a classe Mulher tem o mesmo método que é o comunicar ... até ai tudo bem pois todo animal se comunica de alguma forma, mas você reparou que o homem e a mulher falam da mesma maneira ? Eles usam palavras e se comunicam entre si da mesma forma 
+
 *Oi - Oi*
 
-*Tudo bem ? - Tudo e você ? - Tudo também 
+*Tudo bem ? - Tudo e você ? - Tudo também* 
 
-*Legal - Legal - Fui - Eu também
+*Legal - Legal - Fui - Eu também*
 
 Como resolver ?
 
@@ -219,14 +220,14 @@ public void comunicar(){
 
 E as classes gato e cachorro vão reescrever o método alterando a ação dele
 
-	Cachorro
+ Cachorro
 ```sh
 	public void comunicar(){
 			System.out.println("cachorro latindo");
 		}
-		```sh
+		```
 
-	Gato
+  Gato
 	```sh
 public void comunicar(){
 			System.out.println("gato miando");
@@ -250,29 +251,38 @@ Hehehe olha só que legal vai ficar agora a classe homem e mulher ... vamos por 
 AnimalRacional
 
 	Vai receber Animal
-					Animal tem
-							- nome
-							- implementa Comunicacao
-								comunicacao tem o método comunicar()
-							- metodo comunicar() que por default retorna humano falando
-							- metodo locomover() pois todo animal se locomove
-							- implementa Raciocinio
-								raciocinio tem o metodo raciocinar()
+		Animal tem
+			- nome
+			- implementa Comunicacao
+				comunicacao tem o método comunicar()
+			- metodo comunicar() que por default retorna humano falando
+			- metodo locomover() pois todo animal se locomove
+			- implementa Raciocinio
+				raciocinio tem o metodo raciocinar()
 
 
 Agora voltamos a classe Animal e tiramos o método comunicar !
 
 Pois quem FALA é apenas animal racional correto ? Então na classe AnimalRacional implementamos o método comunicar
+```sh
 	public void comunicar(){
 		System.out.println("humano falando");
 	}
+	```
 
 
-Ufa ! Acho que agora ta ficando legal ... mas pera lá ... no nosso projeto tem um classe carro, que nunca será um animal correto ?!?! E ai o que a aonde ela se encaixa nesse contexto todo ?!
+Ufa ! Acho que agora ta ficando legal ... mas pera lá ... no nosso projeto tem um classe carro, que nunca será um animal correto ?!?! 
+E ai o que a aonde ela se encaixa nesse contexto todo ?!
 Bem lembrado, tesmo mesmo uma classe carro e agora vamos usar ela !
 
 
-De todos os métodos que temos aonde carro se encaixaria sem criarmos algo especifico para ele ? comunicar() ? decidir() ? ou ...
+De todos os métodos que temos aonde carro se encaixaria sem criarmos algo especifico para ele ? 
+
+comunicar() ? 
+
+decidir() ? 
+
+ou ...
 
 método ----> locomover() !
 
@@ -283,30 +293,31 @@ E agora ? Simples ... interface !!!
 Criamos uma interface chamada Acao ( Ação ) e fazemos animal implemente ela assim como o carro ... e na chamada dessa ação chamaos uma Ação e não um animal ou um carro !
 Vamos ao código 
 
-Criamos a classe Acao
-
+Criamos a interface Acao
+```sh
 public interface Acao {
 	public void locomover();
 
 }
+```
 
-fazemos a classe Animal e Carro implementarem a interface Acao
+Fazemos a classe Animal e Carro implementarem a interface Acao
 
 e por fim 
 
 mudamos o método na classe principal de 
+```sh
 	public static void locomover(Animal animal) {
 		animal.locomover();
 	}
-	
+	```
 	para 
 	
+	```sh
 	public static void locomover(Acao acao) {
 		acao.locomover();
 	}
+	```
 
 Pronto ! Agora tudo esta em ordem. Espero que tenha ficado claro a explicação. 
-Qualquer dúvida me chame !
-
-
 

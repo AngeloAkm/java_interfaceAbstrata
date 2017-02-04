@@ -261,30 +261,28 @@ AnimalRacional
 				raciocinio tem o metodo raciocinar()
 
 
+Qualquer dúvida me chame !
+325
+
 Agora voltamos a classe Animal e tiramos o método comunicar !
 
 Pois quem FALA é apenas animal racional correto ? Então na classe AnimalRacional implementamos o método comunicar
+
 ```sh
 	public void comunicar(){
 		System.out.println("humano falando");
 	}
-	```
+```
 
-
-Ufa ! Acho que agora ta ficando legal ... mas pera lá ... no nosso projeto tem um classe carro, que nunca será um animal correto ?!?! 
+Ufa! 
+Acho que agora ta ficando legal ... mas pera lá ... no nosso projeto tem um classe carro, que nunca será um animal correto ?!?! 
 E ai o que a aonde ela se encaixa nesse contexto todo ?!
 Bem lembrado, tesmo mesmo uma classe carro e agora vamos usar ela !
 
 
 De todos os métodos que temos aonde carro se encaixaria sem criarmos algo especifico para ele ? 
 
-comunicar() ? 
-
-decidir() ? 
-
-ou ...
-
-método ----> locomover() !
+comunicar() ? decidir() ? ou ...método ----> locomover() !
 
 Mas locomover é apenas do animal, e carro não é um animal !
 
@@ -294,6 +292,7 @@ Criamos uma interface chamada Acao ( Ação ) e fazemos animal implemente ela as
 Vamos ao código 
 
 Criamos a interface Acao
+
 ```sh
 public interface Acao {
 	public void locomover();
@@ -306,18 +305,21 @@ Fazemos a classe Animal e Carro implementarem a interface Acao
 e por fim 
 
 mudamos o método na classe principal de 
+
 ```sh
 	public static void locomover(Animal animal) {
 		animal.locomover();
 	}
-	```
-	para 
+```
+
+para 
 	
-	```sh
+```sh
 	public static void locomover(Acao acao) {
 		acao.locomover();
 	}
-	```
+```
+
 
 Pronto ! Agora tudo esta em ordem. Espero que tenha ficado claro a explicação. 
 

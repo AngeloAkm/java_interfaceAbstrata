@@ -62,14 +62,15 @@ public interface Raciocinio {
 Legal, dessa forma agora conseguimos diferenciar humanos dos animais. Mas vamos mais além ...
 
 
-Vejam que as classes Homem e Mulher são exatamente iguais.
+Vejam que as classes Homem, Mulher, Cachorro e Gato ainda são exatamente iguais.
 
 Tem o mesmo atributo "nome" ( tipo String ).
-Tem o mesmo método comunicar() e ambos se comunicam da mesma forma.
+Tem o mesmo método comunicar();
 
 Agora imagine a seguinte situação.
-Vamos supor que será necessario alterar a ação que o método comunicar de homem e mulher fazem. 
-No momento é simples porque são apenas duas classes mas imagine se fossem 10, 15 ou N classes... teriamos que entrar uma a uma para alterar ? 
+Vamos supor que será necessario alterar a ação que o método comunicar. 
+No momento é simples porque são apenas poucas classes mas imagine se fossem 10, 15 ou N classes... 
+Teriamos que entrar uma a uma para alterar ? 
 Isso daria muito trabalho sendo que todas estas classes fazem a mesma coisa.
 
 Para resolvermos esse tipo de situação criamos então uma classe ABSTRATA chamada Animal !
@@ -93,25 +94,55 @@ public abstract class Animal {
 }
 ```
 
+Certo mas o cachorro late, o gato mia e o homem e a mulher falam... como eu resolvo isso ? 
+
+Na implementação do método comunicar() da interface Comunicacao nos implementamos o método de acordo com que cada classe é.
+Cachorro late, Gato mia, Homem e Mulher falam.
+
+```sh
+public class Cachorro implements Comunicar {
+
+	@Override
+	public void comunicar() {
+		System.out.println("Cachorro latindo");
+	}
+	// continuação da classe Cachorro...
+
+public class Homem implements Comunicar {
+
+	@Override
+	public void comunicar() {
+		System.out.println("Homem falando");
+	}
+	// continuação da classe Cachorro...
+```
+
 Muito bom, agora todo animal que for criado futuramente , não sera mais necessário a implementação dos métodos básico que um animal faz e muito menos o atributo que todos tem.
 
-Mas ... eu posso então fazer ```sh Animal animal = new Animal()``` ? 
+Mas ... eu posso então fazer ``` Animal animal = new Animal()```  ? 
+
 
 Ja que todos extendem de animal é mais fácil fazer animal direto, e não precisamos mais usar homem, mulher, gato e bla bla bla ...
 
 Vamos lá !
+Com muita calma hehe agora temos o seguinte cenário, se fizermos  ``` Animal animal = new Animal()```  irá funcionar ? 
 
-Com muita calma hehe agora temos o seguinte cenário, se fizermos ```sh Animal animal = new Animal()```  irá funcionar ? 
 SIM ! 
 
 Mas esta correto ? 
+
 Nããão ! 
 
-Mas pq  ?
-Esse animal é um ser abstrato, ou seja, eu não faço " idéia " do que ele faz. 
-Quando eu uso ```sh Animal animal = new Animal()```  eu estou me referindo a que tipo de animal ? Homem ? Mulher ? Peixe ? Gato ?
 
-Então a classe Animal na verdade está aqui para identificar o tipo do ser. Ou seja toda mulher, homem, gato e etc são animais. 
+Mas pq  ?
+
+Esse animal é um ser abstrato, ou seja, eu não faço " idéia " do que ele faz. 
+
+Quando eu uso ```Animal animal = new Animal()```  eu estou me referindo a que tipo de animal ? 
+Homem ? Mulher ? Peixe ? Gato ?
+
+Então a classe Animal na verdade está aqui para identificar o tipo do ser. 
+Ou seja toda mulher, homem, gato e etc são animais. 
 Então eles extendem de Animal recebendo seus atributos sendo assim tornando animais ... sacou ? 
 
 Simplificando 

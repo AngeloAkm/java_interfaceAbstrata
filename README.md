@@ -125,18 +125,19 @@ Mas ... eu posso então fazer ``` Animal animal = new Animal()```  ?
 Ja que todos extendem de animal é mais fácil fazer animal direto, e não precisamos mais usar homem, mulher, gato e bla bla bla ...
 
 Vamos lá !
-Com muita calma hehe agora temos o seguinte cenário, se fizermos  ``` Animal animal = new Animal()```  irá funcionar ? 
 
-SIM ! 
+- Com muita calma hehe agora temos o seguinte cenário, se fizermos  ``` Animal animal = new Animal()```  irá funcionar ? 
 
-Mas esta correto ? 
+	Sim ! 
 
-Nããão ! 
+- Mas esta correto ? 
+
+	Nããão ! 
 
 
-Mas pq  ?
+ -Mas pq  ?
 
-Esse animal é um ser abstrato, ou seja, eu não faço " idéia " do que ele faz. 
+	Esse animal é um ser abstrato, ou seja, eu não faço " idéia " do que ele faz. 
 
 Quando eu uso ```Animal animal = new Animal()```  eu estou me referindo a que tipo de animal ? 
 Homem ? Mulher ? Peixe ? Gato ?
@@ -145,20 +146,12 @@ Então a classe Animal na verdade está aqui para identificar o tipo do ser.
 Ou seja toda mulher, homem, gato e etc são animais. 
 Então eles extendem de Animal recebendo seus atributos sendo assim tornando animais ... sacou ? 
 
-Simplificando 
 
-
-HOMEM ------( extende )------- ANIMAL ----------( homem agora passa a ter )------- HOMEM
-zé ruela 									    Tem nome								Tem nome
-não tem nada									    Se comunica()								Se comunica()
-										    Se locomove()								Se locomove()
-			
-			
-
-Toda classe abstrata não pode ser istanciada, assim como as interfaces. 
+Agora só não podemos esquecer que toda classe abstrata não pode ser istanciada, assim como as interfaces. 
 Você pode instanciar quem herda de animal ;)
 
-Resumo de uma Interface e de uma classe Abstrata
+
+# Resumo de uma Interface e de uma classe Abstrata
 Interface - definimos um método ( sem implementação ) - quem implementar essa interface implementa o método.
 Abstrata - o método ja é pré-definido , ja está implementado. 
 
@@ -181,25 +174,35 @@ Classe Homem que extende de Animal
 		```
 		
 		
-Dessa forma toda vez que for chamado o método comunicar do Homem, a execução dele será sempre ```sh System.out.println("Homem andando");```
+Dessa forma toda vez que for chamado o método comunicar do Homem, a execução dele será sempre ``` System.out.println("Homem andando");```
 
 
-Legal né ? Mas você reparou que até este ponto ha algo no nosso código que esta duplicado e podemos melhorar ? 
-A classe Homem e a classe Mulher tem o mesmo método que é o comunicar ... até ai tudo bem pois todo animal se comunicar de alguma forma, mas vc reparou que o homem e a mulher falam da mesma maneira ? eles usam palavras e se comunicam entre si da mesma forma " Oi - Oi - Tudo bem ? - Tudo e você ? - Tudo também - Legal - Legal - Fui - Eu também " 
+Legal né ? Mas você reparou que até este ponto há algo no nosso código que esta duplicado e podemos melhorar ? 
+
+A classe Homem e a classe Mulher tem o mesmo método que é o comunicar ... até ai tudo bem pois todo animal se comunica de alguma forma, mas você reparou que o homem e a mulher falam da mesma maneira ? Eles usam palavras e se comunicam entre si da mesma forma 
+*Oi - Oi*
+
+*Tudo bem ? - Tudo e você ? - Tudo também 
+
+*Legal - Legal - Fui - Eu também
 
 Como resolver ?
+
 Poderia fazer a classe Animal ter o método comunicar e pronto agora toda classe que extender animal vai ter o método de se comunicar ... mas isso estaria resolvido ? 
-Por exemplo..
+
+Por exemplo...
+
 Se o cachorro "late" quem entende ? O humano ou outro cachorro ?
+
 Se a mulher "fala" quem entende ? O homem ou o cachorro ? ( Sim eu sei as vezes os cachorros entendem mas não é o nosso caso aqui hehe )
 
 Ou seja hoje temos a interface comunicar que esta sendo implementada em Gato, Cachorro, Homem e Mulher. 
 
 Vamos fazer o seguinte para resolver este problema. 
 
-Pegamos a classe Animal e fazemos ela implementar a interface Comunicacao !  ( não entendi ainda nada ... )
+Pegamos a classe Animal e fazemos ela implementar a interface Comunicacao
 
-Calma hehe ... agora vamos nas classes dos animais e tiramos a implementação de Comunicação ... e deixamos apenas elas extendendo de Animal.
+Agora vamos nas classes dos animais e tiramos a implementação de Comunicação ... e deixamos apenas elas extendendo de Animal.
 
 Animal por ter o método comunicar da interface Comunicacao automaticamente obriga as outras classes que extendem dela a terem também.
 
@@ -208,25 +211,31 @@ Ta mas e aonde se encaixa a solução do comunicar do homem e mulher com o resto
 Simples ! 
 
 A classe Animal é a classe super , e lá deixaremos o método comunicar com a ação de " falar "
-
+```sh
 public void comunicar(){
 			System.out.println("humano falando");
 		}
+```
 
 E as classes gato e cachorro vão reescrever o método alterando a ação dele
 
-Cachorro
+	Cachorro
+```sh
 	public void comunicar(){
 			System.out.println("cachorro latindo");
 		}
-Gato
+		```sh
+
+	Gato
+	```sh
 public void comunicar(){
 			System.out.println("gato miando");
 		}
 
+```
 
-
-Ta ficando bom né ? Mas da pra melhorar, vamos lá e deixarmos melhor definido quem apenas fala e quem não fala ;)  
+Ta ficando bom né ? 
+Mas da pra melhorar, vamos lá e deixarmos melhor definido quem apenas fala e quem não fala
 
 Concorda comigo que podemos separar melhor a os animais dos racionais dos irracionais ? 
 
@@ -237,7 +246,9 @@ Eita ... calma !
 
 Hehehe olha só que legal vai ficar agora a classe homem e mulher ... vamos por partes
 
+
 AnimalRacional
+
 	Vai receber Animal
 					Animal tem
 							- nome

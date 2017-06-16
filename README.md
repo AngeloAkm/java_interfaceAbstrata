@@ -7,7 +7,7 @@
 Bom vamos começar, 
  
 Temos inicialmente uma classe Homem, Mulher, Cachorro, Gato e Carro.
- 
+
 Ao decorer deste doc você vai compreender a ligação entre eles.
  
 Vamos começar com o Cachorro e o Homem.
@@ -23,7 +23,7 @@ Agora para fazer o cachorro se comunicar precisariamos criar o método novamente
 
 E assim sucessivamente ... trabalhoso não ?
 
-```sh
+```java
 	public static void conversar(Homem homem) {
 		homem.comunicar();
 	}
@@ -37,7 +37,7 @@ Com a criação da interface Comunicar isso tudo fica muito mais simples, pois f
 Agora nosso método fica assim
 
 
-```sh
+```java
 	public static void conversar(Comunicar objeto) {
 		objeto.comunicar();
 	}
@@ -52,7 +52,7 @@ Bom...
 
 Homem e Mulher de certa formam além de se comunicarem, eles pensam diferente dos animais que agem por instinto ( tudo bem isso não faz muito sentido as vezes mas vamos acreditar que nessa situação isso aconteça hehehe ) então para diferenciarmos " humanos " dos " animais " criamos mais uma interface que se chama Raciocinio e nela criamos um método que se chama raciocinar() 
 
-```sh
+```java
 public interface Raciocinio {
 
 	public void raciocinar();
@@ -79,7 +79,7 @@ Cachorro , gato , homem e mulher não são animais ?
 
 Então criamos uma classe Animal com todos os atributos que todas as classes ( homem/mulher/cachorro/gato ) tem 
 
-```sh
+```java
 public abstract class Animal {
 
 	private String nome;
@@ -99,7 +99,7 @@ Certo mas o cachorro late, o gato mia e o homem e a mulher falam... como eu reso
 Na implementação do método comunicar() da interface Comunicacao nos implementamos o método de acordo com que cada classe é.
 Cachorro late, Gato mia, Homem e Mulher falam.
 
-```sh
+```java
 public class Cachorro implements Comunicar {
 
 	@Override
@@ -159,7 +159,7 @@ Se caso você quiser implementar de forma diferente vou mostrar um exemplo
 
 Classe Animal 
 	método 
-	```sh
+	```java
 		public void locomover(){
 			System.out.println("Animal andando");
 		}
@@ -167,7 +167,7 @@ Classe Animal
 		
 Classe Homem que extende de Animal
 	método 
-	```sh
+	```java
 		public void locomover(){
 			System.out.println("Homem andando");
 		}
@@ -212,7 +212,7 @@ Ta mas e aonde se encaixa a solução do comunicar do homem e mulher com o resto
 Simples ! 
 
 A classe Animal é a classe super , e lá deixaremos o método comunicar com a ação de " falar "
-```sh
+```java
 public void comunicar(){
 			System.out.println("humano falando");
 		}
@@ -221,14 +221,14 @@ public void comunicar(){
 E as classes gato e cachorro vão reescrever o método alterando a ação dele
 
 Cachorro
-```sh
+```java
 	public void comunicar(){
 			System.out.println("cachorro latindo");
 		}
 ```
 
 Gato
-```sh
+```java
 public void comunicar(){
 			System.out.println("gato miando");
 		}
@@ -268,7 +268,7 @@ Agora voltamos a classe Animal e tiramos o método comunicar !
 
 Pois quem FALA é apenas animal racional correto ? Então na classe AnimalRacional implementamos o método comunicar
 
-```sh
+```java
 	public void comunicar(){
 		System.out.println("humano falando");
 	}
@@ -293,7 +293,7 @@ Vamos ao código
 
 Criamos a interface Acao
 
-```sh
+```java
 public interface Acao {
 	public void locomover();
 
@@ -306,7 +306,7 @@ e por fim
 
 mudamos o método na classe principal de 
 
-```sh
+```java
 	public static void locomover(Animal animal) {
 		animal.locomover();
 	}
@@ -314,7 +314,7 @@ mudamos o método na classe principal de
 
 para 
 	
-```sh
+```java
 	public static void locomover(Acao acao) {
 		acao.locomover();
 	}
@@ -322,4 +322,6 @@ para
 
 
 Pronto ! Agora tudo esta em ordem. Espero que tenha ficado claro a explicação. 
+
+Video: [Classes Abstratas e Interfaces](https://www.youtube.com/watch?v=cjYBm1sGRjk&t=61s)
 

@@ -261,9 +261,6 @@ AnimalRacional
 				raciocinio tem o metodo raciocinar()
 
 
-Qualquer dúvida me chame !
-325
-
 Agora voltamos a classe Animal e tiramos o método comunicar !
 
 Pois quem FALA é apenas animal racional correto ? Então na classe AnimalRacional implementamos o método comunicar
